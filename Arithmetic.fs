@@ -1,40 +1,62 @@
 
-module Arithmetic
+function add(x, y) {
+    if (typeof x !== "number" || typeof y !== "number" ||
+        !Number.isFinite(x) || !Number.isFinite(y)) {
+        return "Ошибка: некорректные данные.";
+    }
+    if (x < 0 || y < 0) {
+        return "Ошибка: отрицательные числа запрещены.";
+    }
+    return x + y;
+}
 
-// Қосу функциясы
-let add (numbers: float list) =
-    if List.isEmpty numbers then
-        Error "Массив бос!"
-    elif List.exists (fun x -> x < 0.0 || System.Double.IsNaN(x) || System.Double.IsInfinity(x)) numbers then
-        Error "Қате мән! Теріс немесе жарамсыз сан."
-    else
-        Ok (List.sum numbers)
+function subtract(x, y) {
+    if (typeof x !== "number" || typeof y !== "number" ||
+        !Number.isFinite(x) || !Number.isFinite(y)) {
+        return "Ошибка: некорректные данные.";
+    }
+    if (x < 0 || y < 0) {
+        return "Ошибка: отрицательные числа запрещены.";
+    }
+    return x - y;
+}
 
-// Азайту функциясы
-let subtract (numbers: float list) =
-    if List.isEmpty numbers then
-        Error "Массив бос!"
-    elif List.exists (fun x -> x < 0.0 || System.Double.IsNaN(x) || System.Double.IsInfinity(x)) numbers then
-        Error "Қате мән!"
-    else
-        Ok (List.reduce (-) numbers)
+function multiply(x, y) {
+    if (typeof x !== "number" || typeof y !== "number" ||
+        !Number.isFinite(x) || !Number.isFinite(y)) {
+        return "Ошибка: некорректные данные.";
+    }
+    if (x < 0 || y < 0) {
+        return "Ошибка: отрицательные числа запрещены.";
+    }
+    return x * y;
+}
 
-// Көбейту функциясы
-let multiply (numbers: float list) =
-    if List.isEmpty numbers then
-        Error "Массив бос!"
-    elif List.exists (fun x -> x < 0.0 || System.Double.IsNaN(x) || System.Double.IsInfinity(x)) numbers then
-        Error "Қате мән!"
-    else
-        Ok (List.reduce (*) numbers)
+function divide(x, y) {
+    if (typeof x !== "number" || typeof y !== "number" ||
+        !Number.isFinite(x) || !Number.isFinite(y)) {
+        return "Ошибка: некорректные данные.";
+    }
+    if (x < 0 || y < 0) {
+        return "Ошибка: отрицательные числа запрещены.";
+    }
+    if (y === 0) {
+        return "Ошибка: деление на ноль невозможно.";
+    }
+    return x / y;
+}
 
-// Бөлу функциясы
-let divide (numbers: float list) =
-    if List.isEmpty numbers then
-        Error "Массив бос!"
-    elif List.exists (fun x -> x < 0.0 || System.Double.IsNaN(x) || System.Double.IsInfinity(x)) numbers then
-        Error "Қате мән!"
-    elif List.tail numbers |> List.exists (fun x -> x = 0.0) then
-        Error "Нөлге бөлуге болмайды!"
-    else
-        Ok (List.reduce (/) numbers)
+// Функцияларды тексеру
+console.log("10 + 5 =", add(10, 5));
+console.log("Қате қосу:", add("а", 5));
+
+console.log("10 - 5 =", subtract(10, 5));
+console.log("Қате азайту:", subtract(10, "б"));
+
+console.log("10 * 5 =", multiply(10, 5));
+console.log("Қате көбейту:", multiply("в", 5));
+
+console.log("10 / 5 =", divide(10, 5));
+console.log("Қате бөлу:", divide(10, "г"));
+console.log("Нөлге бөлу:", divide(10, 0));
+console.log("Теріс сан:", add(-5, 10));
